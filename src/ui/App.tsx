@@ -1,15 +1,10 @@
-import {ThermistorChainService} from 'service/ThermistorChainService.ts';
-import {useStore} from 'store/useStore.ts';
+import {ThermistorChainWidget} from 'ui/thermistor-chain/ThermistorChainWidget.tsx';
 
 
 export function App() {
-    const [data] = useStore(new ThermistorChainService());
-
     return (
-       <div>
-           {
-               data.map(it => it.averageTemperature)
-           }
-       </div>
+        <div >
+            <ThermistorChainWidget/>
+        </div>
     )
 }

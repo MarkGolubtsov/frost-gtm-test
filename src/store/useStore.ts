@@ -6,12 +6,12 @@ interface DataService<T> {
 
 export function useStore<T>(service: DataService<T>): [T[], boolean] {
     const [data, setData] = useState<T[]>([]);
-    const [loading, setLoading] = useState(false);
+    const [isLoaded, setIsLoaded] = useState(false);
 
     useEffect(() => {
-        setLoading(true);
-        service.getAll().then(setData).finally(() => setLoading(false));
+        setIsLoaded(false);
+        service.getAll().then(setData).finally(() => setIsLoaded(true));
     }, []);
 
-    return [data, loading];
+    return [data, isLoaded];
 }

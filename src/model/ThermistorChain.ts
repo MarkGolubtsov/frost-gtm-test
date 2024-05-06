@@ -1,4 +1,4 @@
-class ThermistorChainDataItem {
+export class ThermistorChainDataItem {
     key: string;
     value: number;
     isValid: boolean;
@@ -13,6 +13,8 @@ class ThermistorChainDataItem {
 export class ThermistorChain {
     time: Date;
 
+    objectId: string;
+
     sensorType: string;
 
     status: string;
@@ -21,7 +23,7 @@ export class ThermistorChain {
 
     averageTemperature : string;
 
-    data: ThermistorChainDataItem[];
+    data: Map<string, ThermistorChainDataItem>;
 
     constructor(target: any) {
         this.time = new Date(target.time);
@@ -29,9 +31,10 @@ export class ThermistorChain {
         this.status = target.status;
         this.criticalTemperature = target.criticalTemperature;
         this.averageTemperature = target.averageTemperature;
+        this.objectId = target.objectId;
 
-        this.data = Object.keys(target.data).map(it => {
-            return new ThermistorChainDataItem(it, target.data[it].value, target.data[it].isValid)
-        })
+        this.data = new Map(Object.keys(target.data).map(it => {
+            return[it, new ThermistorChainDataItem(it, target.data[it].value, target.data[it].isValid)]
+        }))
     }
 }

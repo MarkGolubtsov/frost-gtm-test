@@ -10,6 +10,7 @@ export default defineConfig({
             model: '/src/model',
             service: '/src/service',
             store: '/src/store',
+            util: '/src/util',
         }
     }
 })
