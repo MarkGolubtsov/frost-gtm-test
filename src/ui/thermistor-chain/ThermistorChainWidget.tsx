@@ -40,12 +40,13 @@ export function ThermistorChainWidget() {
                 key='Дата'
                 title='Дата'
                 render={(it: ThermistorChain) => <ThermistorChainTimeView time={it.time}/>}/>
+
             <Column
                 width={80}
                 fixed='left'
                 key='Te'
                 title='Te'
-                render={(it: ThermistorChain) => it.criticalTemperature}/>
+                render={(it: ThermistorChain) => Number(it.averageTemperature).toFixed(3)}/>
 
             <ColumnGroup title="Глубина, м">
                 {
