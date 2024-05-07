@@ -1,11 +1,8 @@
-const formatter = Intl.DateTimeFormat('ru-RU', {
-    year: "numeric",
-    month: "numeric",
-    day: "numeric",
-    hour: "numeric",
-    minute: "numeric",
-});
+import {Dayjs} from 'dayjs';
 
-export function formatDate(date: Date) {
-    return formatter.format(date);
+/**
+ * @description Конвертация даты в строку формата 'YYYY-MM-DD HH:mm:ss'.
+ */
+export function formatDate(date: Dayjs) {
+    return date.format('YYYY-MM-DD HH:mm:ss');
 }

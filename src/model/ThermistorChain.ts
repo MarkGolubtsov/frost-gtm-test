@@ -1,3 +1,5 @@
+import dayjs from 'dayjs';
+
 export class ThermistorChainDataItem {
     key: string;
     value: number;
@@ -11,7 +13,7 @@ export class ThermistorChainDataItem {
 }
 
 export class ThermistorChain {
-    time: Date;
+    time: dayjs.Dayjs;
 
     objectId: string;
 
@@ -26,7 +28,7 @@ export class ThermistorChain {
     data: Map<string, ThermistorChainDataItem>;
 
     constructor(target: any) {
-        this.time = new Date(target.time);
+        this.time = dayjs(target.time);
         this.sensorType = target.sensorType;
         this.status = target.status;
         this.criticalTemperature = target.criticalTemperature;
